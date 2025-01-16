@@ -4,7 +4,8 @@ import Redis from 'ioredis';
 
 @Injectable()
 export class RedisService extends Redis {
-	public constructor(readonly configService: ConfigService) {
+	public constructor(private readonly configService: ConfigService) {
 		super(configService.getOrThrow<string>('REDIS_URI'));
+		console.log(configService.getOrThrow<string>('REDIS_URI'));
 	}
 }

@@ -1,0 +1,34 @@
+mutation CreateUser($data: CreateUserInput!) {
+  createUser(data: $data)
+}
+query variables: 
+{
+  "data": {    
+    "username": "Test2",
+    "email": "1234@123.com",
+    "password": "Silence1737"
+  }
+}
+====================================================================================================
+query FindAllUsers {
+  fundAllUsers {
+    id
+    email
+    username
+    avatar
+  }
+}
+====================================================================================================
+mutation LogoutUser {
+  logoutUser
+}
+====================================================================================================
+query findProfile {
+  findProfile {
+    email
+    avatar
+    displayName
+    username
+  }
+}
+====================================================================================================

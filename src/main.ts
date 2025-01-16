@@ -9,14 +9,16 @@ import { RedisStore } from 'connect-redis';
 import * as cookieParser from 'cookie-parser';
 import * as session from 'express-session';
 
+// import * as graphqlUploadedExpress from 'graphql-upload/graphqlUploadedExpress.js'
+
 async function bootstrap() {
 	const app = await NestFactory.create(CoreModule);
 
 	const config = app.get(ConfigService);
 
 	const redis = app.get(RedisService);
-
 	app.use(cookieParser(config.getOrThrow<string>('COOKIES_SECRET')));
+	// app.use(config.getOrThrow<string>('GRAPHQL_PREFIX'), graphqlUploadedExpress())
 
 	app.useGlobalPipes(
 		new ValidationPipe({
@@ -51,8 +53,8 @@ async function bootstrap() {
 	app.enableCors({
 		origin: config.getOrThrow<string>('ALLOWED_ORIGIN'),
 		credentials: true,
-		exposedHeaders: ['set-cookie'],
-	});
+		exposedHeaders: ['set-cookie']
+	})
 
 	// await app.listen(process.env.APPLICATION_PORT ?? 3000);
 	await app.listen(config.getOrThrow<number>('APPLICATION_PORT'));
