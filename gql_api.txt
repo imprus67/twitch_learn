@@ -32,3 +32,79 @@ query findProfile {
   }
 }
 ====================================================================================================
+mutation CreateUser($data: CreateUserInput!) {
+  createUser(data: $data)
+}
+{
+  "data": {    
+    "username": "Test3",
+    "email": "12345@123.com",
+    "password": "Silence1737"
+  }
+}
+====================================================================================================
+mutation LoginUser($data: LoginInput!) {
+  loginUser(data: $data) {
+    email
+    username
+  }
+}
+{
+  "data": {
+    "login": "12345@123.com",
+    "password": "Silence1737"
+  }
+}
+====================================================================================================
+query findSessionByUser {
+  findSessionsByUser {
+    id
+    createdAt
+    metadata {
+      location {
+        country
+        city
+        latitude
+        longitude
+      }
+    	device {
+        browser
+        os
+        type
+      }
+      ip
+    }
+  }
+}
+====================================================================================================
+query findCurrentSession {
+  findCurrentSession {
+    id
+    createdAt
+    metadata {
+      location {
+        country
+        city
+        latitude
+        longitude
+      }
+    	device {
+        browser
+        os
+        type
+      }
+      ip
+    }
+  }
+}
+====================================================================================================
+mutation removeSession ($id: String!) {
+  removeSession(id: $id)
+}
+{
+  "id":"_JI5CDD4L3Ov4BvO0fPN5L7hZTIM3__p"
+}
+====================================================================================================
+mutation clearSessionCookie {
+  clearSessionCookie
+}

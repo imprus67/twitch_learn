@@ -1,1 +1,3 @@
 yarn add geoip-lite device-detector-js i18n-iso-countries @types/geoip-lite
+----------------------------------------------------------------------------------------------------
+yarn add @nestjs-modules/mailer
